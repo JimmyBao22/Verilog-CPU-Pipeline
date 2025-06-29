@@ -1,0 +1,27 @@
+@0
+8211 // movl r1, 0x21
+8802 // mov r2, 0x80
+9002
+e001 // jump r1
+
+@10 // memory address 0x20
+
+// this is t0, but shifted by a byte (misaligned PC)
+80ff
+5086
+c086
+c086
+f086
+a086
+0280
+ffe0 // jump r2
+
+@40 // memory address 0x80
+// this is t0 again. can you now jump back to an aligned pc?
+8680
+8650
+86c0
+86c0
+86f0
+80a0
+ffff

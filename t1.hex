@@ -1,0 +1,23 @@
+@0
+8fea // rA = -2, so that we can add 2 later
+821b // rB = 0x21, address of the string 
+80cc // rC = 0xC, PC of the loop
+818d // rD = 0x18, the halt instruction
+8fff // rF = 0x00FF, so we can check if the high order byte is 0 or 1
+900f
+fb0e // loop: rE = mem[rB], the next character to look at
+0ef1 //       sub r1, rE, rF: r1 > 0 if the high order byte is 1
+e12d //       js rD, r1: terminate if the high order byte is 0
+0e00 //       r0 = rE - r0: print rE otherwise
+0bab //       rB = rB - rA = rB + 2
+e00c //       jz rC, r0: loop again
+ffff // 0x1A, the end
+
+@10
+6800 // 0x21 = 'h'
+6501 // 0x23 = 'e'
+6c01 // 0x25 = 'l'
+6c01 // 0x27 = 'l'
+6f01 // 0x29 = 'o'
+0a01 // 0x31 = '\n'
+ff00 // end of string
